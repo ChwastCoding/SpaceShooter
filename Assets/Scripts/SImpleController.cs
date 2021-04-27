@@ -6,6 +6,8 @@ using UnityEngine;
 public class SImpleController : MonoBehaviour
 {
     private Controller _controller;
+    private CameraController _cameraController;
+    
     [SerializeField] float sensibility = 0.01f;
 
     [SerializeField] private bool invertX = false;
@@ -16,6 +18,12 @@ public class SImpleController : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<Controller>();
+        _cameraController = Camera.main.GetComponent<CameraController>();
+        _controller.onBarrelFinished.AddListener(delegate
+        {
+            _cameraController.cameraRotates = true; 
+            _cameraController.SetReducedResponsiveness(false);
+        });
     }
 
     // Update is called once per frame
@@ -30,6 +38,23 @@ public class SImpleController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _controller.Turbo(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _controller.RightwardsBarrel();
+            _cameraController.cameraRotates = false;
+            _cameraController.SetReducedResponsiveness(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Q))
+        {
+            _controller.LeftwardsBarrel();
+            _cameraController.cameraRotates = false;
+            _cameraController.SetReducedResponsiveness(true);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space)){
+            _controller.Shoot();
         }
 
         var mousePos = Input.mousePosition;
