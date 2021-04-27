@@ -12,8 +12,11 @@ public class Controller : MonoBehaviour
     private Vector3 targetDirection;
     
     [SerializeField] private float speed = 10f;
-
+    [SerializeField] private float turboSpeed = 30f;
+    [SerializeField] private float normalSpeed = 20f;
+    
     [Range(0, 1)] public float t = .001f;
+    [Range(0, 1)] public float acceleration = .1f;
     private Vector3 previousDirection;
     public float Speed
     {
@@ -21,49 +24,40 @@ public class Controller : MonoBehaviour
         set => speed = value;
     }
 
-    public float agility = 1f;
-
+    public float turboAgility = .07f;
+    public float normalAgility = .1f;
+    public float agility = 0.1f;
+    
+    private bool turbo = false;
+    
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody >();
 
+        Turbo(false);
+
+        agility = normalAgility;
+        speed = normalSpeed;
+        
         _rigidbody.velocity = transform.forward * speed;
         targetDirection = transform.forward;
         previousDirection = targetDirection;
     }
 
+
     private void FixedUpdate()
     {
-        var maxStep = Time.fixedDeltaTime * speed;
-
-        /*var newDirection = Vector3.RotateTowards(transform.forward, targetDirection, maxStep, 0f);
-        transform.rotation = Quaternion.LookRotation(newDirection, Vector3.up);
-        */
-
+        agility = Mathf.Lerp(agility, turbo ? turboAgility : normalAgility, acceleration);
+        speed = Mathf.Lerp(speed, turbo ? turboSpeed : normalSpeed, acceleration);
         
-        /*var angle = Vector3.SignedAngle(previousDirection, transform.forward, ) / 2.0f;
-        var localUp = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));*/
-
         previousDirection = Vector3.Lerp(previousDirection, targetDirection, t);
 
-        Debug.DrawRay(Vector3.zero, previousDirection);
-
         var rotationAxis = Vector3.Cross(transform.forward, Vector3.up);
-
         var tempUp = Quaternion.AngleAxis(90, rotationAxis) * previousDirection;
         tempUp.y = -tempUp.y;
         tempUp = Quaternion.AngleAxis(180, transform.forward) * tempUp;
         
-        Debug.DrawRay(Vector3.zero, tempUp);
-        
-/*
-        var worldAngle = Vector3.Angle(transform.forward, Vector3.forward);
-        localUp = Quaternion.Euler(0.0f, worldAngle, 0.0f) * localUp;
-        
-        */
         transform.rotation = Quaternion.LookRotation(targetDirection, tempUp);
-        
-        //Debug.DrawRay(Vector3.zero, localUp);
         
         _rigidbody.velocity = transform.forward * speed;
     }
@@ -71,6 +65,11 @@ public class Controller : MonoBehaviour
     public void Shoot()
     {
         // TODO implement shooting
+    }
+
+    public void Turbo(bool state)
+    {
+        turbo = state;
     }
 
     private void Update()
@@ -86,6 +85,6 @@ public class Controller : MonoBehaviour
     public void Turn(Vector2 pitchYaw)
     {
         targetDirection = Quaternion.AngleAxis(-pitchYaw.x * agility, transform.right) * targetDirection;
-        targetDirection = Quaternion.AngleAxis(pitchYaw.y * agility, Vector3.up) * targetDirection;
+        targetDirection = Quaternion.AngleAxis(pitchYaw.y * agility, transform.up) * targetDirection;
     }
 }

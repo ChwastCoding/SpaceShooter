@@ -249,7 +249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1815797410}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &264099147
 AudioListener:
@@ -426,7 +426,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1815797410}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!136 &522266795
 CapsuleCollider:
@@ -715,7 +715,7 @@ Transform:
   m_LocalScale: {x: 3.3574226, y: 0.13733, z: 0.65962}
   m_Children: []
   m_Father: {fileID: 1815797410}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &991168710
 BoxCollider:
@@ -1043,6 +1043,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  turboSpeed: 30
+  normalSpeed: 20
+  t: 0.022
+  acceleration: 0.05
+  turboAgility: 0.05
+  normalAgility: 0.1
   agility: 0.1
 --- !u!65 &1815797407
 BoxCollider:
@@ -1118,9 +1124,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 264099146}
   - {fileID: 522266794}
   - {fileID: 991168709}
+  - {fileID: 264099146}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1152,7 +1158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e464d2b8e55ed49ae929a2a63bcb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibility: 0.1
+  sensibility: 0.01
+  invertX: 0
+  invertY: 1
 --- !u!1 &2046820722
 GameObject:
   m_ObjectHideFlags: 0
