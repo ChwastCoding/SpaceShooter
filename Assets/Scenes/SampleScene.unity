@@ -1073,6 +1073,8 @@ MonoBehaviour:
   onBarrelFinished:
     m_PersistentCalls:
       m_Calls: []
+  tempSpeed: 100
+  tempSlider: 0.055
 --- !u!65 &1815797407
 BoxCollider:
   m_ObjectHideFlags: 0

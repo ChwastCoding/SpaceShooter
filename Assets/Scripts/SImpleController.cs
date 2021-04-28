@@ -34,10 +34,12 @@ public class SImpleController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             _controller.Turbo(true);
+            _cameraController.SetReducedResponsiveness(true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _controller.Turbo(false);
+            _cameraController.SetReducedResponsiveness(false);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
