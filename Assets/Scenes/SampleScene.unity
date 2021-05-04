@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 1815797406}
   - component: {fileID: 1815797411}
   - component: {fileID: 1815797412}
+  - component: {fileID: 1815797413}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Player
@@ -1073,8 +1074,7 @@ MonoBehaviour:
   onBarrelFinished:
     m_PersistentCalls:
       m_Calls: []
-  tempSpeed: 100
-  tempSlider: 0.055
+  upwardsBias: 0.05
 --- !u!65 &1815797407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1182,9 +1182,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e464d2b8e55ed49ae929a2a63bcb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibility: 0.01
+  sensibility: 0.004
   invertX: 0
   invertY: 1
+--- !u!114 &1815797413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815797405}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9776984c0ffe8448a37045d62ec4184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensibility: 5
+  invertX: 0
+  invertY: 0
 --- !u!1 &2046820722
 GameObject:
   m_ObjectHideFlags: 0
