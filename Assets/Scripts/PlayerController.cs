@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _controller.Turn(sensibility * new Vector2(
-                    (invertX ? -1 : 1) * (Input.acceleration.z - zatstart),
+                    (invertX ? -1 : 1) * (Input.acceleration.z - zatstart + 0.2f),
                     (invertY ? -1 : 1) * (Input.acceleration.x - xatstart)));
     }
 }

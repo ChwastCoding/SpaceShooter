@@ -13,7 +13,7 @@ public class SImpleController : MonoBehaviour
     [SerializeField] private bool invertX = false;
     [SerializeField] private bool invertY = false;
 
-    private bool isTurboPressed = false;
+    //private bool isTurboPressed = false;
     
     void Start()
     {
