@@ -14,6 +14,6 @@ public class SImpleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _controller.Turn(new Vector2(sensibility * Input.GetAxis("Vertical"), sensibility * Input.GetAxis("Horizontal")));
+        _controller.Turn(new Vector2(sensibility * Input.GetAxisRaw("Vertical"), sensibility * Input.GetAxisRaw("Horizontal")));
     }
 }
