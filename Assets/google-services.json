@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "933265211939",
+    "project_id": "spaceshooter-58619",
+    "storage_bucket": "spaceshooter-58619.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933265211939:android:aba7f6c5a0011aaf876796",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.SpaceShooter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933265211939-n273rmh614a7ga2hafbuqk18g8qvjkef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa7PiB8oHQPZyTjbWakZTlCmPwpnEeiRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933265211939-n273rmh614a7ga2hafbuqk18g8qvjkef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
