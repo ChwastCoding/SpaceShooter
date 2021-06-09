@@ -32,6 +32,8 @@ public class Controller : MonoBehaviour
     public float normalAgility = .1f;
     public float agility = 0.1f;
 
+    public float angularSpeed = .1f;
+    
     public float barrelAngularSpeed = 10f;
     private float barrelAngle = 0f;
     private bool rightwardsBarrel = false, leftwardsBarrel = false;
@@ -148,7 +150,11 @@ public class Controller : MonoBehaviour
         targetRotation = Quaternion.Slerp(targetRotation, Quaternion.LookRotation(transform.forward, Vector3.up), upwardsBias * bias);
         var rotation = Quaternion.AngleAxis(angle / 2f * rotationalBias, transform.forward) * targetRotation;
         
+        
+        
         transform.rotation = rotation;
+        // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, agility);
+        
         transform.Rotate(Vector3.forward, barrelAngle);
         
         _rigidbody.velocity = transform.forward * speed;
@@ -187,7 +193,7 @@ public class Controller : MonoBehaviour
     public void TurnTowardsGlobal(Vector3 direction)
     {
         // targetDirection = direction;i
-        targetRotation = Quaternion.LookRotation(direction);
+        targetRotation = Quaternion.RotateTowards(targetRotation, Quaternion.LookRotation(direction), agility * angularSpeed);
     }
 
     public void Turn(Vector2 pitchYaw)
