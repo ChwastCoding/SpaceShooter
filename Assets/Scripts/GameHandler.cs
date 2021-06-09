@@ -17,7 +17,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("player");
+        _player = GameObject.FindGameObjectWithTag("Player");
         _playerController = _player.GetComponent<PlayerController>();
         _playerHealth = _player.GetComponent<Health>();
         _enemyHealthBar = GameObject.Find("Enemy Health Bar");
