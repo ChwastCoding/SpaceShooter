@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [NotNull] [SerializeField] private Transform target;
+    [NotNull] [SerializeField] public Transform target;
 
     private Vector3 offsetPosition;
     private Quaternion offsetRotation;

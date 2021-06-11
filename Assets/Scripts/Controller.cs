@@ -18,6 +18,9 @@ public class Controller : MonoBehaviour
     [SerializeField] private float turboSpeed = 30f;
     [SerializeField] private float normalSpeed = 20f;
 
+    public Transform[] laserOrigins;
+    public LaserController laserPrefab;
+    
     [Range(0, 1)] public float t = .001f;
     [Range(0, 1)] public float acceleration = .1f;
     //private Vector3 previousDirection;
@@ -162,7 +165,11 @@ public class Controller : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.DrawRay(transform.position, transform.position + transform.forward * 50f, Color.red, upwardsBias);
+        for (int i = 0; i < laserOrigins.Length; i++)
+        {
+            var origin = laserOrigins[i];
+            var laser = Instantiate(laserPrefab, origin.position, origin.rotation);
+        }
     }
 
     public void Turbo(bool state)

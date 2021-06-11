@@ -17,6 +17,8 @@ public class SImpleController : MonoBehaviour
     
     void Start()
     {
+        GetComponent<Health>().onHealthZero.AddListener(OnPlayerDeath);
+        
         _controller = GetComponent<Controller>();
         _cameraController = Camera.main.GetComponent<CameraController>();
         _controller.onBarrelFinished.AddListener(delegate
@@ -65,5 +67,12 @@ public class SImpleController : MonoBehaviour
             (invertX ? -1 : 1) * (mousePos.x - Screen.width / 2.0f)) * sensibility;
         _controller.Turn(input);
         
+    }
+
+    private void OnPlayerDeath()
+    {
+        _cameraController.enabled = false;
+        _controller.enabled = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }
